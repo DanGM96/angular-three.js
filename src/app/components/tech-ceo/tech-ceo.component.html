@@ -1,0 +1,14 @@
+<th-group [rotation]="rotation">
+  <th-object3D
+    (onClick)="toggleText()"
+    [visible]="true"
+    loadGLTF
+    [url]="objectUrl"
+    [scale]="[0.05, 0.05, 0.05]"
+    [position]="[0, -15, 0]">
+  </th-object3D>
+
+  <th-group [visible]="showText">
+    <app-text *ngFor="let social of socials" [social]="social"></app-text>
+  </th-group>
+</th-group>

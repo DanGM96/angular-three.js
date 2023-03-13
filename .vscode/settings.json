@@ -1,0 +1,12 @@
+{
+  // * VSCode configs
+  "files.eol": "\n",
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": true
+  },
+
+  // * Extensions configs
+  "prettier.configPath": ".prettierrc"
+}

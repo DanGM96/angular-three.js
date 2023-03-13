@@ -1,0 +1,57 @@
+:host {
+  position: fixed;
+  z-index: 11;
+  width: 100%;
+
+  nav {
+    transition: 0.25s;
+    position: relative;
+    transform: translateY(-100%);
+
+    display: flex;
+    justify-content: center;
+
+    & a {
+      text-decoration: none;
+      font-family: Kanit, sans-serif;
+      color: #ddd;
+      padding: 12px 24px;
+
+      &:hover {
+        color: #fff;
+      }
+
+      &.active {
+        background-color: #222;
+      }
+    }
+
+    & button {
+      font-family: Kanit, sans-serif;
+      position: absolute;
+      align-self: center;
+      right: 0;
+      color: #ddd;
+      border: none;
+      background-color: #222;
+      padding: 6px 12px;
+      margin: 0 8px;
+      cursor: pointer;
+      border-radius: 4px;
+
+      &:hover {
+        color: #fff;
+      }
+
+      &:active {
+        background-color: #333;
+      }
+    }
+  }
+
+  &:hover {
+    nav {
+      transform: translateY(0%);
+    }
+  }
+}

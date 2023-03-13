@@ -1,0 +1,12 @@
+body {
+  margin: 0;
+  background-color: #111;
+}
+
+/* Kanit-400 */
+@font-face {
+  font-family: Kanit;
+  font-style: normal;
+  font-weight: 400;
+  src: url('assets/fonts/kanit/400.woff2') format('woff2'), url('/assets/fonts/kanit/400.woff') format('woff');
+}

@@ -1,0 +1,27 @@
+<th-canvas #canvas (onRender)="onRender()" [thStats]="(allThings.showStats$ | async) ?? false">
+  <th-scene [background]="'assets/images/mountains.jpg' | loadTexture">
+    <th-mesh>
+      <th-html
+        #html
+        [position]="[0, 0, 0]"
+        [scale]="[1, 1, 1]"
+        [style]="{
+          color: 'white',
+          backgroundColor: '#333',
+          padding: '1em',
+          display: 'flex',
+          flexDirection: 'column'
+        }"
+        [transform]="true"
+        [occlude]="true">
+        <h1>Cineminha?</h1>
+
+        <iframe src="https://play.hbomax.com/page/urn:hbo:page:series" width="1920" height="1080"></iframe>
+      </th-html>
+    </th-mesh>
+  </th-scene>
+
+  <th-perspectiveCamera #camera [args]="[75, 16 / 9, 0.1, 1000]" [position]="[0, 0, 30]" [lookAt]="[0, 0, 0]">
+    <th-orbitControls></th-orbitControls>
+  </th-perspectiveCamera>
+</th-canvas>

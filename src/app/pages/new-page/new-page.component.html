@@ -1,0 +1,48 @@
+<th-canvas (onRender)="onRender()">
+  <th-perspectiveCamera [args]="[75, 16 / 9, 0.1, 1000]" [position]="[0, 0, 30]">
+    <th-orbitControls></th-orbitControls>
+  </th-perspectiveCamera>
+
+  <th-scene [background]="'assets/images/energy.jpg' | loadTexture">
+    <th-group [rotation]="rotation" (onClick)="hideText = !hideText">
+      <th-object3D
+        loadGLTF
+        [url]="augustus.highRes"
+        [scale]="[0.05, 0.05, 0.05]"
+        [position]="[0, -15, 0]"></th-object3D>
+
+      <th-object3D
+        [visible]="false"
+        loadGLTF
+        [url]="'assets/models/youtube.glb'"
+        [scale]="[4, 4, 4]"
+        [position]="[0, 5, 10]"></th-object3D>
+
+      <th-object3D
+        [visible]="false"
+        loadGLTF
+        [url]="'assets/models/spotify.glb'"
+        [scale]="[4, 4, 4]"
+        [position]="[0, 5, -10]"></th-object3D>
+
+      <th-mesh [position]="[0, 10, -5]" [rotation]="[10, 0, 0]">
+        <th-torusGeometry [args]="[5, 0.5, 20, 100]"></th-torusGeometry>
+        <th-lineBasicMaterial [color]="'gold' | color"></th-lineBasicMaterial>
+      </th-mesh>
+    </th-group>
+
+    <th-html [transform]="true" [scale]="[5, 5, 5]" [position]="[-15, -10, 10]">
+      <div [hidden]="hideText" class="text">
+        <h1>Augustus</h1>
+        <h2>Software Engineer</h2>
+        <h3>Part time Saint</h3>
+      </div>
+    </th-html>
+
+    <th-hemisphereLight [color]="'white' | color" [groundColor]="'blue' | color"></th-hemisphereLight>
+
+    <th-pointLight [position]="[10, 5, 10]">
+      <th-orbitControls></th-orbitControls>
+    </th-pointLight>
+  </th-scene>
+</th-canvas>

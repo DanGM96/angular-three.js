@@ -1,0 +1,18 @@
+<th-canvas #canvas (onRender)="onRender()" [thStats]="(allThings.showStats$ | async) ?? false">
+  <th-scene [background]="'assets/images/city.jpg' | loadTexture">
+    <app-tech-ceo
+      [rotation]="true ? rotation : [0, 0, 0]"
+      [objectUrl]="augustus.lowPoly"
+      [socials]="socials"></app-tech-ceo>
+
+    <th-pointLight #light [position]="[10, 5, 10]">
+      <th-orbitControls></th-orbitControls>
+    </th-pointLight>
+
+    <th-hemisphereLight [args]="['#fff', '#000', 0.1]"></th-hemisphereLight>
+  </th-scene>
+
+  <th-perspectiveCamera #camera [args]="[75, 16 / 9, 0.1, 1000]" [position]="[0, 0, 30]" [lookAt]="[0, 0, 0]">
+    <th-orbitControls></th-orbitControls>
+  </th-perspectiveCamera>
+</th-canvas>

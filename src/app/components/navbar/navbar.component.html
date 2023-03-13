@@ -1,0 +1,11 @@
+<nav>
+  <a
+    *ngFor="let route of routes"
+    [hidden]="isRouteImplemented(route.path)"
+    [routerLink]="['/', route.path]"
+    [routerLinkActive]="'active'">
+    {{ route.name }}
+  </a>
+
+  <button [hidden]="false" (click)="allThings.toggleStats()">Stats</button>
+</nav>

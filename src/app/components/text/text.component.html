@@ -1,0 +1,19 @@
+<th-group>
+  <th-mesh [position]="social.object.position">
+    <th-object3D
+      [style]="{ cursor: 'pointer' }"
+      (onClick)="openSite(social.name)"
+      loadGLTF
+      [url]="social.object.path"
+      [scale]="social.object.scale"
+      [position]="social.object.position">
+    </th-object3D>
+  </th-mesh>
+
+  <th-mesh [position]="social.description.position">
+    <th-textGeometry
+      *ngIf="font | async as font"
+      [args]="[social.description.text | uppercase, { font: font, size: 1, height: 0.1 }]"></th-textGeometry>
+    <th-meshPhongMaterial [color]="'#fff' | color"></th-meshPhongMaterial>
+  </th-mesh>
+</th-group>

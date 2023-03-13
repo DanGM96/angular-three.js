@@ -1,0 +1,57 @@
+<div #slider class="slider" (pointerdown)="onSliderPointerDown($any($event))">
+  <div class="slider-visible"></div>
+</div>
+
+<th-canvas
+  #canvas
+  [disableDefaultView]="true"
+  (onRender)="onRender()"
+  [thStats]="(allThings.showStats$ | async) ?? false">
+  <th-view
+    [scissor]="{
+      x: 0,
+      y: 0,
+      width: sliderPosition,
+      height: canvas.rendererCanvas?.nativeElement?.height ?? 0
+    }"
+    [scissorTest]="true"
+    [camera]="$any(camera)">
+    <th-scene [background]="'#000' | color">
+      <app-tech-ceo [rotation]="rotation" [objectUrl]="augustus.lowPoly" [socials]="socials"></app-tech-ceo>
+
+      <th-gridHelper [visible]="true" [args]="[25, 25]" [position]="[0, -15, 0]" />
+
+      <th-pointLight #light [visible]="pointLight" [position]="[10, 5, 10]" [intensity]="1">
+        <th-orbitControls></th-orbitControls>
+      </th-pointLight>
+
+      <th-hemisphereLight [visible]="!pointLight" [args]="['red', 'green', 1]"></th-hemisphereLight>
+    </th-scene>
+  </th-view>
+
+  <th-view
+    [scissor]="{
+      x: sliderPosition,
+      y: 0,
+      width: canvas.rendererCanvas?.nativeElement?.width ?? 0,
+      height: canvas.rendererCanvas?.nativeElement?.height ?? 0
+    }"
+    [scissorTest]="true"
+    [camera]="$any(camera)">
+    <th-scene [background]="'#000' | color">
+      <app-tech-ceo [rotation]="rotation" [objectUrl]="augustus.highRes" [socials]="socials"></app-tech-ceo>
+
+      <th-gridHelper [visible]="true" [args]="[25, 25]" [position]="[0, -15, 0]" />
+
+      <th-pointLight #light [visible]="pointLight" [position]="[10, 5, 10]" [intensity]="1">
+        <th-orbitControls></th-orbitControls>
+      </th-pointLight>
+
+      <th-hemisphereLight [visible]="!pointLight" [args]="['green', 'red', 1]"></th-hemisphereLight>
+    </th-scene>
+  </th-view>
+
+  <th-perspectiveCamera #camera [args]="[75, 16 / 9, 0.1, 1000]" [position]="[0, 0, 30]" [lookAt]="[0, 0, 0]">
+    <th-orbitControls></th-orbitControls>
+  </th-perspectiveCamera>
+</th-canvas>
